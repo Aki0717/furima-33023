@@ -32,17 +32,17 @@
 -has_one :order
 
 ## orders
-|Column  |Type       |Options                          |
-|--------|-----------|---------------------------------|
-| user   | referenes | null: false, foreign_key: true  |
-| item   | referenes | null: false, foreign_key: true  |
+|Column  |Type       |Options             |
+|--------|-----------|--------------------|
+| user   | referenes | foreign_key: true  |
+| item   | referenes | foreign_key: true  |
 
 ### Asociation
 -belongs_to :user
 -belongs_to :item
--has_one :adress
+-has_one :address
 
-## adresses
+## addresses
 |Column          |Type        |Options            |
 |----------------|------------|-------------------|
 | post_code      | string     | null: false       |
