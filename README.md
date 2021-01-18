@@ -3,12 +3,12 @@
 |--------------------|---------|--------------------------|
 | name               | string  | null: false              |
 | email              | string  | null: false, unique: true|
-| encryted-password  | string  | null: false              |
-| first-name         | string  | null: false              |
-| last-name          | string  | null: false              |
-| kana-first-name    | string  | null: false              |
-| knna-last-name     | string  | null: false              |
-| birth-date         | date    | null: false              |
+| encrypted-password  | string  | null: false              |
+| first_name         | string  | null: false              |
+| last_name          | string  | null: false              |
+| kana_first_name    | string  | null: false              |
+| kana_last_name     | string  | null: false              |
+| birth_date         | date    | null: false              |
 
 ### Association
 -has_many :items
@@ -36,7 +36,6 @@
 |--------|-----------|---------------------------------|
 | user   | referenes | null: false, foreign_key: true  |
 | item   | referenes | null: false, foreign_key: true  |
-購入者と販売者の切り分けをやらなくてもいいのか疑問点です（本来はこちらに記載しないと思うのですが提出もかねて質問できれば幸いです。）
 
 ### Asociation
 -belongs_to :user
