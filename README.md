@@ -25,7 +25,7 @@
 | prefecture_id    | integer   | null: false                    |
 | days_to_ship_id  | integer   | null: false                    |
 | price            | integer   | null: false                    |
-| user             | referenes | foreign_key: true              |
+| user             | references | foreign_key: true              |
 
 ### Asociation
 -belongs_to :user
@@ -34,8 +34,8 @@
 ## orders
 |Column  |Type       |Options             |
 |--------|-----------|--------------------|
-| user   | referenes | foreign_key: true  |
-| item   | referenes | foreign_key: true  |
+| user   | references | foreign_key: true  |
+| item   | references | foreign_key: true  |
 
 ### Asociation
 -belongs_to :user
