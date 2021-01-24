@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    id                 {1}
     title              {Faker::Lorem.sentence}
     text               {Faker::Lorem.sentence}
     category_id        {Faker::Number.within(range: 2..11)}

@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
       it "priceが空の場合保存できない" do
         @item.price = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       it "category_idが1の場合保存できない" do
         @item.category_id = 1
@@ -91,8 +91,17 @@ RSpec.describe Item, type: :model do
       it "priceに半角数字以外の文字列が入力されている場合保存できない" do
         @item.price = "aaa"
         @item.valid?
-        # 気になる点：本来なら「priceには半角数字を使用してください」表示されるはずなんだけバリデーション間違えてるかな。半角数字しか読み込ませないようにしてるけど他の方法がいいのだろうか。
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("Price には半角数字を使用してください")
+      end
+      it "priceに全角文字が入力されている場合登録できない" do
+        @item.price = 'ああ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price には半角数字を使用してください")
+      end
+      it "priceに英数字混合で入力されている場合は登録できない" do
+        @item.price = "a0a0a0"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price には半角数字を使用してください")
       end
     end
   end
