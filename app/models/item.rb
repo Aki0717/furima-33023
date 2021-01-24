@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   end
 
   # 「整数のみ」と最大値最小値の設定
-  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equoal: 9999999}
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   PRICE_REGEX = /\A[0-9]+\z/i.freeze
-  validates_format_of :price, with: PRICE_REGEX, message: 'には半角数字で設定してください' 
+  validates_format_of :price, with: PRICE_REGEX, message: 'には半角数字を使用してください' 
 end
