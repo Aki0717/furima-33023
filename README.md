@@ -32,10 +32,10 @@
 -has_one :order
 
 ## orders
-|Column  |Type       |Options             |
-|--------|-----------|--------------------|
-| user   | references | foreign_key: true  |
-| item   | references | foreign_key: true  |
+|Column  |Type        |Options              |
+|--------|------------|---------------------|
+| user   | references | foreign_key: true   |
+| item   | references | foreign_key: true   |
 
 ### Asociation
 -belongs_to :user
