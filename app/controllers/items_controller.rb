@@ -34,9 +34,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
+  # def destroy
       
-  end
+  # end
 
 
   private
