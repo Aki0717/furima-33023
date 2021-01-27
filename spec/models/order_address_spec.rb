@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = FactoryBot.build(:order_address)
-  end
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @order_address = FactoryBot.build(:order_address,user_id: @user.id,item_id: @item.id)
+    end
 
   describe "購入テーブルと住所テーブルの保存" do
     context "テーブルに保存できる" do
@@ -52,7 +54,7 @@ RSpec.describe OrderAddress, type: :model do
           expect(@order_address.errors.full_messages).to include("User can't be blank")
         end
         it "prefecture_idが1だと保存出来ない" do
-          @order_address.prefecture_id = "1"
+          @order_address.prefecture_id = 1
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Prefecture must be other than 1")
         end
@@ -63,6 +65,16 @@ RSpec.describe OrderAddress, type: :model do
         end
         it "phone_numberはハイフンなしでしか保存出来ない" do
           @order_address.phone_number = "000-0000-0000"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
+        end
+        it "phone_numberは12以上あると保存出来ない" do
+          @order_address.phone_number = "000000000000"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
+        end
+        it "phone_numberは英数混合であると保存出来ない" do
+          @order_address.phone_number = "a00000000000"
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
         end
