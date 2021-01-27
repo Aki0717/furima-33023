@@ -41,6 +41,21 @@ RSpec.describe OrderAddress, type: :model do
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
         end
+        it "item_idが空だと保存出来ない" do
+          @order_address.item_id = ""
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Item can't be blank")
+        end
+        it "user_idが空だと保存出来ない" do
+          @order_address.user_id = ""
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("User can't be blank")
+        end
+        it "prefecture_idが1だと保存出来ない" do
+          @order_address.prefecture_id = "1"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Prefecture must be other than 1")
+        end
         it "post_codeがハイフンなしだと保存出来ない" do
           @order_address.post_code = "1111111"
           @order_address.valid?
