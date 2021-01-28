@@ -74,9 +74,9 @@ RSpec.describe OrderAddress, type: :model do
           expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
         end
         it "phone_numberは英数混合であると保存出来ない" do
-          @order_address.phone_number = "a00000000000"
+          @order_address.phone_number = "a000000000"
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
+          expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include half-width alphanumeric")
         end
         it "tokenの値がからの時保存出来ない" do
           @order_address.token = ""
